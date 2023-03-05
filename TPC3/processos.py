@@ -1,4 +1,5 @@
 import re
+import json
 
 def main():
     f = open("processos.txt")
@@ -102,6 +103,38 @@ def main():
             print(f' Numero de relações de tipo')
             for r in DRaux:
                 print(f'   {r} : {DR[r]}')
+        
+        elif (inputUser == 'd'):
+            records = []
+            f = open("processos.txt")
+            i=0
+            for line in f:
+                # split the line by '::' delimiter
+                fields = line.strip().split('::')
+                
+                # create a dictionary for the record
+                if (len(fields)>=5):
+                    record = {
+                        'id': fields[0],
+                        'birth_date': fields[1],
+                        'name': fields[2],
+                        'father_name': fields[3],
+                        'mother_name': fields[4],
+                        'other_relatives': fields[5]
+                    }
+
+                    # append the record to the list of records
+                    records.append(record)
+                    i+=1
+                if i==20:
+                    break
+
+            with open('db.json', 'w') as jsonfile:
+                json.dump(records, jsonfile)
+            print('Ficheiro db.json criado com 20 registos')        
+            
+
+
 
         else: break
         print('-------------------------------------')        
