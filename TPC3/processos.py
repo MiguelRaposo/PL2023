@@ -8,7 +8,7 @@ def main():
     all=re.compile(r'(?P<id>\d+)::(?P<ano>\d{4})-(?P<mes>\d{2})-(?P<dia>\d{2})::(?P<nome>[a-zA-Z ]+)::(?P<nomeP>[a-zA-Z ]+)::(?P<nomeM>[a-zA-Z ]+)::(?P<nomeEtc>[\w\.\, ]+)?::\n')
     pnome=re.compile(r'^[a-zA-Z]+')
     unome=re.compile(r'[a-zA-Z]+$')
-    relacao=re.compile(r',(\w[a-zA-Z ]+)\. Proc\.')
+    relacao=re.compile(r',(\w[a-zA-Z ]+)\.\s*Proc\.')
 
     PPA = {} # precessos por ano
     anos = []
